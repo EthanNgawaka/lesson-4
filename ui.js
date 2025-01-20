@@ -35,7 +35,8 @@ class Sparkle{
 }
 
 class CharPopUp{
-	constructor(img_src, rect, text){
+	constructor(img_src, rect, text, above=false){
+		this.above = above;
 		this.string = "";
 		this.img = new image(img_src);
 		this.rect = rect;
@@ -69,6 +70,10 @@ class CharPopUp{
 			let h = windowH*0.3;
 			this.change_string(this.string+this.text[this.ind]);
 			this.textBox.rect = [w/2+this.rect[0]-w/1.3-w*this.bubble_bounce/2, h/2-h*this.bubble_bounce/2+this.rect[1]-h/1.3, this.bubble_bounce*w, this.bubble_bounce*h]
+			if(this.above){
+				this.textBox.rect[1] -= 90
+				this.textBox.rect[0] += 250
+			}
 			this.textBox.textSize = 30*this.bubble_bounce;
 			this.ind ++;
 			this.text_timer = 0;
@@ -82,6 +87,10 @@ class CharPopUp{
 			let h = windowH*0.3;
 			this.bubble_bounce = lerp(this.bubble_bounce, (this.targ == windowH) ? 0 : 1, 0.3);
 			this.textBox.rect = [w/2+this.rect[0]-w/1.3-w*this.bubble_bounce/2, h/2-h*this.bubble_bounce/2+this.rect[1]-h/1.3, this.bubble_bounce*w, this.bubble_bounce*h]
+			if(this.above){
+				this.textBox.rect[1] -= 90
+				this.textBox.rect[0] += 250
+			}
 			this.textBox.textSize = math.max(30*this.bubble_bounce, 0);
 			if(math.abs(windowH - this.draw_rect[1]) < 1 && this.targ == windowH){
 				return true;

@@ -57,6 +57,8 @@ function correct_fn(){
 	entities = [];
 	sfx.pop.play();
 
+	let x = windowW*0.4;
+
 	score += 100;
 	if(timer < 10){
 		score += 50;
@@ -64,7 +66,7 @@ function correct_fn(){
 	let w = windowW*0.3;
 	let h = w*1.5;
 	let mirror = new Button(
-		[windowW/2-w/2,windowH/2-h/2,w,h],
+		[x-w/2,windowH/2-h/2,w,h],
 		"./assets/imgs/ui/cleanmirror.png",
 		"", "white", null
 	)
@@ -83,7 +85,7 @@ function correct_fn(){
 	w = c.measureText(txt).width + h;
 	c.restore();
 	let block = new Button(
-		[windowW/2-w/2,windowH/2 - h/2,w,h],
+		[x-w/2,windowH/2 - h/2,w,h],
 		"./assets/imgs/ui/blank.png",
 		txt, "black", function(){}, "Comic"
 	)
@@ -105,7 +107,7 @@ function correct_fn(){
 		rndtxt+="I"
 	}
 	let round_btn = new Button(
-		[windowW/2-w/2,h/4 + h,w,h],
+		[x-w/2,h/4 + h,w,h],
 		"./assets/imgs/ui/blank.png",
 		"round " + rndtxt, "black", null, "Comic"
 	)
@@ -114,7 +116,7 @@ function correct_fn(){
 
 	w = h*5
 	let scorebtn = new Button(
-		[windowW/2-w/2,h/4,w,h],
+		[x-w/2,h/4,w,h],
 		"./assets/imgs/ui/blank.png",
 		"SCORE: "+score, "black", null, "Comic"
 	)
@@ -123,10 +125,10 @@ function correct_fn(){
 
 	// btns
 	entities.push(new Button(
-		[windowW/2-150,windowH*0.8,300,100],"./assets/imgs/ui/continue.png",
+		[x-150,windowH*0.8,300,100],"./assets/imgs/ui/continue.png",
 		"", "white", new_round 
 	));
-	entities.push(new CharPopUp("./assets/imgs/eliza/happy.png", [windowW*0.6, windowH/2, windowW/2, windowH/2], "Great choice! The mirror reflects your growth!"));
+	entities.push(new CharPopUp("./assets/imgs/eliza/happy.png", [windowW*0.65, windowH/2, windowW/2, windowH/2], "Great choice! The mirror reflects your growth!", true));
 }
 
 function check_answer(chosen_txt){

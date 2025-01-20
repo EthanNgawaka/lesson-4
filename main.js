@@ -1,5 +1,6 @@
 // imgs
 const bg = new image("./assets/imgs/bg/room.png");
+const rotate = new image("./assets/imgs/ui/rotate.png");
 //
 let shakeTimer = 0;
 let lastShake = 0;

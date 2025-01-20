@@ -570,25 +570,38 @@ let transThresh = 2;
 // jank as hell but just use the mouse obj
 // Touch event handlers
 function handleTouchStart(event) {
-    event.preventDefault();
-    mouse.x = event.touches[0].clientX/sf[0];
-    mouse.y = event.touches[0].clientY/sf[1];
+    mouse.x = event.touches[0].clientX;
+    mouse.y = event.touches[0].clientY;
+
+    let space = (window.innerWidth*0.075);
+    mouse.x = (mouse.x+window.innerWidth/2)/0.925 - window.innerWidth/2 - space;
+    mouse.x /= sf[0]
+
+    space = (window.innerHeight*0.1);
+    mouse.y = (mouse.y+window.innerHeight/2)/0.9 - window.innerHeight/2 - space;
+    mouse.y /= sf[1]
     mouse.button.left = true;
 }
 
 function handleTouchMove(event) {
-    event.preventDefault();
-    mouse.x = event.touches[0].clientX/sf[0];
-    mouse.y = event.touches[0].clientY/sf[1];
+    mouse.x = event.touches[0].clientX;
+    mouse.y = event.touches[0].clientY;
+
+    let space = (window.innerWidth*0.075);
+    mouse.x = (mouse.x+window.innerWidth/2)/0.925 - window.innerWidth/2 - space;
+    mouse.x /= sf[0]
+
+    space = (window.innerHeight*0.1);
+    mouse.y = (mouse.y+window.innerHeight/2)/0.9 - window.innerHeight/2 - space;
+    mouse.y /= sf[1]
+    mouse.button.left = true;
 }
 
 function handleTouchEnd(event) {
-    event.preventDefault();
     mouse.button.left = false;
 }
 
 function handleTouchCancel(event) {
-    event.preventDefault();
     mouse.button.left = false;
 }
 // Add touch event listeners
